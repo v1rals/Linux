@@ -1,0 +1,33 @@
+#!/bin/bash
+tail -n +2 cfg |head -n +3 > temp	#config file adapter
+source "./temp"
+FILES=$SOURCEDIR*
+TARGET=$TARGETDIR
+PATTERN='\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b'
+for f in $FILES		#main procedure - 
+do
+echo "Processing $f file..."
+uuid=$(cat $f | tail -n1)
+if [[ $uuid =~ $PATTERN ]]; then
+
+if [ ! -z $(grep "$f" "temp") ]; then
+echo $f "locked"
+continue
+else
+echo $f >> temp
+
+fi
+echo $uuid
+else continue
+fi
+
+MODATE=$(stat -c %y "$f")
+MODATE=${MODATE% *}
+#  echo $MODATE
+NAMEDATE=$(cat "$f" | head -n1 )
+mv "$f" "$TARGET""$NAMEDATE $MODATE" #name and move
+echo $FNAME
+echo $NAMEDATE"_"$(date +"%H:%M %d/%m/%Y")>>logs #logging, oblivious
+sed 's,'"$f"',,' -i temp
+done
+exit 0
