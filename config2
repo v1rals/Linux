@@ -1,0 +1,5 @@
+```Bash
+SOURCEDIR="./sort/"
+TARGETDIR="./sort2/"
+LOGFILENAME="logs"
+```
