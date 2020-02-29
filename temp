@@ -1,0 +1,3 @@
+user = $USER
+lc_name = $LC_NAME
+rando = $PWD

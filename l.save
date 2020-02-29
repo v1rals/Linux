@@ -1,0 +1,27 @@
+#!/bin/bash
+
+printf 'Какой Linux дистрибутив Вы знаете? '
+
+read DISTR
+
+
+
+case $DISTR in
+
+     ubuntu)
+
+          echo "Я тоже знаю Ubuntu! Эта система основана на Debian."
+
+          ;;
+
+     centos|rhel)
+
+          echo "Эй! Это мой любимый серверный дистрибутив!"
+
+          ;;
+
+     windows)
+
+          echo "Очень смешно..."
+
+          ;; 
