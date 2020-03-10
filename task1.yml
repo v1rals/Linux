@@ -1,8 +1,0 @@
-```YAML
----
-
-script: "l"
-subroutine: "replace"
-begin_patr: "<--"
-end_patr: "-->"
-```
